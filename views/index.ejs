@@ -1,0 +1,33 @@
+<!-- views/index.ejs -->
+<div style="display: flex; height: 100vh;">
+
+  <!-- 왼쪽 카테고리 메뉴 -->
+  <div style="width: 200px; background-color: #f2f2f2; padding: 20px;">
+    <h3>카테고리</h3>
+    <ul style="list-style: none; padding-left: 0;">
+      <li><a href="/category/자유게시판">자유게시판</a></li>
+      <li><a href="/category/애완동물">애완동물</a></li>
+      <li><a href="/category/게임">게임</a></li>
+    </ul>
+  </div>
+
+  <!-- 오른쪽 게시글 영역 -->
+  <div style="flex: 1; padding: 20px;">
+    <h2><%= currentCategory %></h2>
+    <a href="/write/<%= currentCategory %>">글쓰기</a>
+    <hr />
+
+    <% if (posts.length === 0) { %>
+      <p>게시글이 없습니다.</p>
+    <% } else { %>
+      <% posts.forEach(post => { %>
+        <div style="margin-bottom: 20px;">
+          <strong><%= post.nickname %></strong> - <%= post.created_at.toLocaleString ? post.created_at.toLocaleString() : post.created_at %><br/>
+          <p><%= post.content %></p>
+        </div>
+        <hr>
+      <% }); %>
+    <% } %>
+  </div>
+
+</div>

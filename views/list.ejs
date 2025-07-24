@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>게시판</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="container">
+    <!-- 좌측 카테고리 메뉴 -->
+    <aside id="sidebar">
+      <h3>카테고리</h3>
+      <ul>
+        <li><a href="/category/자유게시판">자유게시판</a></li>
+        <li><a href="/category/애완동물">애완동물</a></li>
+        <li><a href="/category/게임">게임</a></li>
+      </ul>
+      <br/>
+      <a href="/write">글쓰기</a>
+    </aside>
+
+    <!-- 우측 게시글 목록 -->
+    <main id="content">
+      <h2><%= category %> 게시판</h2>
+      <% if (posts.length === 0) { %>
+        <p>아직 등록된 글이 없습니다.</p>
+      <% } else { %>
+        <% posts.forEach(post => { %>
+          <div class="post-box">
+            <p><strong><%= post.nickname %></strong> | <%= post.created_at.toISOString().slice(0, 10) %></p>
+            <p><%= post.content %></p>
+          </div>
+          <hr/>
+        <% }) %>
+      <% } %>
+    </main>
+  </div>
+</body>
+</html>

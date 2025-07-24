@@ -1,0 +1,9 @@
+<!-- write.ejs -->
+<h2><%= category %> 게시판에 글쓰기</h2>
+<form action="/write/<%= category %>" method="POST">
+  <label>내용:<br/>
+    <textarea name="content" rows="5" cols="50" required></textarea>
+  </label>
+  <br/><br/>
+  <button type="submit">등록</button>
+</form>
